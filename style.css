@@ -1,0 +1,246 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #f5e6d3 0%, #d4a574 100%);
+    font-family: 'Georgia', serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.apple-clock {
+    position: relative;
+    width: 400px;
+    height: 450px;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+}
+
+/* Stem */
+.stem {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%) rotate(20deg);
+    width: 12px;
+    height: 60px;
+    background: linear-gradient(to right, #654321, #8b5a3c);
+    border-radius: 6px;
+    z-index: 2;
+}
+
+/* Leaf */
+.leaf {
+    position: absolute;
+    top: 5px;
+    right: 145px;
+    width: 100px;
+    height: 60px;
+    background: linear-gradient(135deg, #c17855 0%, #d4915f 50%, #b8764d 100%);
+    border-radius: 0 50% 50% 0;
+    transform: rotate(-25deg);
+    z-index: 3;
+}
+
+.leaf::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #8b5a3c;
+    transform: translateY(-50%);
+}
+
+/* Apple body */
+.apple {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 350px;
+    height: 360px;
+    background: linear-gradient(135deg, #b8452d 0%, #c85a3c 25%, #d46b47 50%, #c85a3c 75%, #b8452d 100%);
+    border-radius: 45% 45% 48% 48% / 50% 50% 50% 50%;
+    position: relative;
+    box-shadow: inset -20px -20px 40px rgba(0, 0, 0, 0.2),
+                inset 20px 20px 40px rgba(255, 255, 255, 0.1);
+}
+
+.apple::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    left: 20%;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(ellipse at center, #c85a3c 0%, transparent 70%);
+    border-radius: 50%;
+    opacity: 0.5;
+}
+
+.apple::after {
+    content: '';
+    position: absolute;
+    top: -30px;
+    right: 20%;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(ellipse at center, #c85a3c 0%, transparent 70%);
+    border-radius: 50%;
+    opacity: 0.5;
+}
+
+/* Stars */
+.star {
+    position: absolute;
+    color: #f4a460;
+    font-size: 32px;
+    text-shadow: 0 0 10px rgba(244, 164, 96, 0.5);
+    animation: twinkle 3s ease-in-out infinite;
+}
+
+.star1 { top: 15%; left: 10%; animation-delay: 0s; }
+.star2 { top: 25%; right: 15%; font-size: 40px; animation-delay: 0.5s; }
+.star3 { top: 45%; left: 18%; animation-delay: 1s; }
+.star4 { top: 55%; right: 12%; font-size: 28px; animation-delay: 1.5s; }
+.star5 { bottom: 25%; left: 12%; animation-delay: 2s; }
+.star6 { bottom: 20%; right: 20%; font-size: 36px; animation-delay: 2.5s; }
+
+@keyframes twinkle {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.9); }
+}
+
+/* Dots */
+.dot {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #d4915f;
+    border-radius: 50%;
+}
+
+.dot1 { top: 20%; left: 25%; }
+.dot2 { top: 35%; right: 30%; }
+.dot3 { bottom: 30%; left: 28%; }
+.dot4 { bottom: 35%; right: 25%; }
+
+/* Clock face */
+.clock-face {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: rgba(139, 90, 60, 0.3);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Clock hands */
+.hand {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: bottom center;
+    background: #2c1810;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.hour-hand {
+    width: 8px;
+    height: 60px;
+    margin-left: -4px;
+    background: linear-gradient(to top, #2c1810, #4a2f1f);
+}
+
+.minute-hand {
+    width: 6px;
+    height: 80px;
+    margin-left: -3px;
+    background: linear-gradient(to top, #3d2417, #5c3d2a);
+}
+
+.second-hand {
+    width: 3px;
+    height: 90px;
+    margin-left: -1.5px;
+    background: #d4915f;
+    box-shadow: 0 0 5px rgba(212, 145, 95, 0.8);
+}
+
+.center-dot {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: #f4a460;
+    border-radius: 50%;
+    border: 3px solid #2c1810;
+    box-shadow: 0 0 10px rgba(244, 164, 96, 0.6);
+    z-index: 10;
+}
+
+/* Digital time display */
+.digital-time {
+    font-size: 48px;
+    font-weight: bold;
+    color: #8b5a3c;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 20px 40px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(139, 90, 60, 0.3);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .apple-clock {
+        width: 300px;
+        height: 340px;
+    }
+    
+    .apple {
+        width: 280px;
+        height: 290px;
+    }
+    
+    .clock-face {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .hour-hand {
+        height: 45px;
+    }
+    
+    .minute-hand {
+        height: 60px;
+    }
+    
+    .second-hand {
+        height: 70px;
+    }
+    
+    .digital-time {
+        font-size: 36px;
+    }
+}
